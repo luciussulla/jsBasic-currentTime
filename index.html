@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Czas:
+        <span class="hours"></span>:
+        <span class="minutes"></span>:
+        <span class="seconds"></span>
+    </p>
+    <script>
+        function clockwork() {
+            const hoursHTML   = document.querySelector('.hours')
+            const minutesHTML = document.querySelector('.minutes')
+            const secondsHTML = document.querySelector('.seconds')  
+            return () => {
+                setInterval(()=>{
+                    let currentTime = new Date()
+                    let seconds = currentTime.getSeconds()
+                    let minutes = currentTime.getMinutes()
+                    let hours =   currentTime.getHours()
+                    hoursHTML.textContent =   `${hours < 9 ? '0'+hours : hours}`
+                    minutesHTML.textContent = `${minutes < 9 ? '0'+minutes : minutes}`
+                    secondsHTML.textContent = `${seconds < 9 ? '0'+seconds : seconds}`
+                },1000)
+            }
+        }
+        const changeTime = clockwork()
+        changeTime()
+    </script>
+</body>
+</html>
